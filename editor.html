@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>CastleTD — редактор уровней</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #1b2a17; color: #eaf3e6; font: 13px/1.35 system-ui, sans-serif; }
+  #editor { position: fixed; inset: 0; touch-action: none; user-select: none; -webkit-user-select: none; }
+  .editor-field { position: absolute; inset: 0; }
+  .editor-overlay, .editor-routes { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .editor-toolbar { position: absolute; top: 0; left: 0; right: 0; display: flex; gap: 3px; padding: 3px 4px; overflow-x: auto;
+    background: rgba(14, 22, 10, .86); z-index: 10; scrollbar-width: thin; }
+  .editor-actions { position: absolute; right: 4px; bottom: 4px; display: flex; gap: 3px; z-index: 12; }
+  .editor-toolbar button, .editor-actions button { min-width: 44px; min-height: 44px; flex: 0 0 auto; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 1px; padding: 2px 4px; border-radius: 8px; border: 1px solid #3a5230; background: #24351b; color: #eaf3e6; cursor: pointer; }
+  .editor-toolbar button b, .editor-actions button b { font-size: 16px; line-height: 1; }
+  .editor-toolbar button small, .editor-actions button small { font-size: 9px; opacity: .85; white-space: nowrap; }
+  .editor-toolbar button.on, .editor-actions button.on { background: #4f8f33; border-color: #8fd06a; }
+  .editor-actions button.play { background: #2f6fd6; border-color: #7fb0ff; }
+  .editor-toolbar button:disabled, .editor-actions button:disabled { opacity: .4; }
+  .editor-toolbar select { min-height: 44px; background: #24351b; color: #eaf3e6; border: 1px solid #3a5230; border-radius: 8px; }
+  .editor-toolbar .sep { flex: 0 0 6px; }
+  .editor-side { position: absolute; top: 54px; right: 0; bottom: 56px; width: min(320px, 48vw); overflow: auto; padding: 8px 10px;
+    background: rgba(14, 22, 10, .94); border-left: 1px solid #2c3f22; z-index: 11; box-sizing: border-box; }
+  .editor-side h2 { font-size: 15px; margin: 0 0 8px; }
+  .editor-side button { min-height: 44px; padding: 6px 10px; border-radius: 8px; border: 1px solid #3a5230; background: #24351b; color: #eaf3e6;
+    cursor: pointer; text-align: left; }
+  .editor-side button:disabled { opacity: .45; }
+  .editor-side button.primary { background: #2f6fd6; border-color: #7fb0ff; width: 100%; }
+  .editor-side .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0; }
+  .editor-side input, .editor-side select { min-height: 36px; max-width: 150px; background: #101a0b; color: #eaf3e6; border: 1px solid #3a5230; border-radius: 6px; padding: 2px 6px; }
+  .editor-side .actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .editor-side .issues { display: flex; flex-direction: column; gap: 6px; }
+  .editor-side .issues button { border-color: #b8453c; }
+  .editor-side .ok { color: #8fd06a; font-weight: bold; }
+  .editor-side .draft { border: 1px solid #2c3f22; border-radius: 8px; padding: 6px; margin: 8px 0; }
+  .editor-side .draft canvas { width: 100%; image-rendering: pixelated; display: block; margin-bottom: 4px; }
+  .editor-side small { display: block; color: #a9c39c; }
+  .editor-status { position: absolute; left: 8px; bottom: 8px; min-height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid #6fc04a;
+    background: rgba(20, 50, 14, .9); color: #c8f0b0; font-weight: bold; z-index: 12; cursor: pointer; }
+  .editor-status.bad { border-color: #ff6b5e; background: rgba(70, 18, 14, .92); color: #ffd2cc; }
+  .editor-toast { position: absolute; left: 50%; top: 60px; transform: translateX(-50%); max-width: 70vw; padding: 8px 14px; border-radius: 10px;
+    background: rgba(0, 0, 0, .78); color: #fff; z-index: 13; pointer-events: none; text-align: center; }
+</style>
+  <script type="module" crossorigin src="./assets/editor-CUxQfjQB.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/puppet-PlwhBhTI.js">
+  <link rel="modulepreload" crossorigin href="./assets/levelFiles-DEBFbIgh.js">
+</head>
+<body>
+<div id="editor"></div>
+</body>
+</html>
